@@ -1,21 +1,30 @@
 @font-face {
-    font-family: Shabnam;
-    src: url(assets/font/Shabnam-Medium-FD.ttf);
-    src: url(assets/font/Shabnam-Medium-FD.woff);
-  }
-  html {
-    margin: 0px;
-    padding: 0px;
-    font-family: Shabnam;
-  }
-  * {
-    box-sizing: border-box;
-    outline: none;
-    font-family: Shabnam;
-  }
-  a {
-    text-decoration: none !important;
-  }
-  button {
-    cursor: pointer;
-  }
+  font-family: Shabnam;
+  src: url(font/Shabnam-Medium-FD.ttf);
+  src: url(font/Shabnam-Medium-FD.woff);
+}
+html {
+  margin: 0px;
+  padding: 0px;
+  font-family: Shabnam;
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+  font-family: Shabnam;
+}
+a {
+  text-decoration: none !important;
+}
+button {
+  cursor: pointer;
+}
+.add_task_div{
+  display: flex;
+  flex-direction: column;
+}
+.add_task_div *{
+  margin-top: 20px;
+  padding: 10px;
+  width: 300px;
+}

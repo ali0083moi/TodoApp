@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
-    
+    <div>
+        <!-- <button onclick="addTask()">add task</button> -->
+        <button onclick="doneTask()">done task</button>
+        <button onclick="removeTask()">remove task</button>
+        <button onclick="editTask()">edit task</button>
+    </div>
+    <div id="addTaskDiv" class="add_task_div">
+        <h2>add task</h2>
+        <input type="text" name="taskTitle" id="taskTitle" title="Please enter your task title"
+            placeholder="Task title">
+        <input type="text" name="taskDescription" id="taskDescription" title="Please enter your task description"
+            placeholder="Task description">
+        <input type="text" name="taskCategory" id="taskCategory" title="Please enter your task category"
+            placeholder="Task category">
+        <select name="taskLabel" id="taskLabel" title="Please select your task label">
+            <option value="important">important</option>
+            <option value="normal">normal</option>
+            <option value="not important">not important</option>
+        </select>
+        <button onclick="addTask()">add task</button>
+    </div>
     <script src="assets/script.js"></script>
 </body>
+
 </html>
