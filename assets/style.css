@@ -7,6 +7,7 @@ html {
   margin: 0px;
   padding: 0px;
   font-family: Shabnam;
+  direction: rtl;
 }
 * {
   box-sizing: border-box;
@@ -15,16 +16,62 @@ html {
 }
 a {
   text-decoration: none !important;
+  cursor: pointer;
+  color: #ffffff;
+}
+a:hover {
+  color: #ffffff;
 }
 button {
   cursor: pointer;
 }
-.add_task_div{
+body {
+  background-color: #191e44;
+  text-align: right;
+}
+.add_task_div,
+.edit_task_div {
   display: flex;
   flex-direction: column;
 }
-.add_task_div *{
+.add_task_div *,
+.edit_task_div * {
   margin-top: 20px;
   padding: 10px;
   width: 300px;
+}
+.tasks_div {
+}
+.main_menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #8d57d483;
+  height: 100px;
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  position: sticky;
+}
+.menu_items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 50px;
+}
+.menu_items ul {
+  list-style: none;
+  color: #ffffff;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+}
+.menu_items ul a {
+  margin-left: 15px;
+  padding: 5px;
 }
