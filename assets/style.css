@@ -29,19 +29,6 @@ body {
   background-color: #191e44;
   text-align: right;
 }
-.add_task_div,
-.edit_task_div {
-  display: flex;
-  flex-direction: column;
-}
-.add_task_div *,
-.edit_task_div * {
-  margin-top: 20px;
-  padding: 10px;
-  width: 300px;
-}
-.tasks_div {
-}
 .main_menu {
   display: flex;
   flex-direction: row;
@@ -74,4 +61,124 @@ body {
 .menu_items ul a {
   margin-left: 15px;
   padding: 5px;
+}
+.dashboard_main_div {
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.dashboard_main_div {
+  color: #ffffff;
+}
+.dashboard_titr {
+  margin: 20px 0px;
+}
+hr {
+  border-color: #c4c4c4 !important;
+}
+.task_content {
+  width: 100%;
+}
+.task_content tbody tr {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: 17px;
+  border-bottom: 1px solid #ffffff;
+  padding: 15px 0px;
+}
+.task_action button {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  margin-left: 10px;
+}
+.label_important,
+.label_normal,
+.label_minor {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85px;
+  margin: 0px;
+}
+.label_important {
+  background-color: #922f43;
+}
+.label_normal {
+  background-color: #5792bb;
+}
+.label_minor {
+  background-color: #9b64e3;
+}
+.add_task_back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #00000079;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  display: none;
+}
+.add_task_div {
+  background-color: #28285a;
+  width: 800px;
+  height: 500px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;
+  box-shadow: 0 0 25px #9b64e344;
+  justify-content: center;
+}
+#taskDescription , #taskDescriptionE{
+  height: 145px;
+  resize: none;
+}
+.add_task_inputs_div {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.add_task_inputs_div div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.add_task_input , .add_task_btn , .cancel_btn{
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  width: 300px;
+}
+.add_task_input{
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #181c44;
+  color: #ffffff;
+  box-shadow: 0 0 10px #00000033;
+  border: none;
+  width: 300px;
+}
+.add_task_label{
+  margin: 0px;
+  width: 300px;
+}
+.add_task_btn{
+  background-color: #58BB57;
+  color: #ffffff;
+  width: 135px !important;
+}
+.cancel_btn{
+  background-color: #B83731;
+  color: #ffffff;
+  width: 135px !important;
 }

@@ -1,4 +1,6 @@
 # TodoApp
 It's a Todo App
 
-Created By 'ali0083moi'
+This website can organize your works
+
+Created By 'Ali Moghadasi'
