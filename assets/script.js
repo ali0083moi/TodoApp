@@ -47,13 +47,13 @@ let showTask = (task) => {
         trId++;
         document.getElementById("taskContent").innerHTML += `
         <tr id ="tsakTr${trId}">
-        <td class="col-md-2">${task.title}</td>
-        <td class="col-md-3">${task.description}</td>
-        <td class="col-md-2">${task.category}</td>
-        <td class="col-md-1">${task.createdDate}</td>
-        <td class="col-md-1">${task.finishDate}</td>
+        <td id="titleInput${trId}" class="col-md-2">${task.title}</td>
+        <td id="descriptionInput${trId}" class="col-md-3">${task.description}</td>
+        <td id="categoryInput${trId}" class="col-md-2">${task.category}</td>
+        <td id="createdDateInput${trId}" class="col-md-1">${task.createdDate}</td>
+        <td id="finishDateInput${trId}" class="col-md-1">${task.finishDate}</td>
         <td class="col-md-1">
-            <p class="label_${task.label}">
+            <p id="labelInput${trId}" class="label_${task.label}">
             ${labels[task.label]}
             </p>
         </td>
@@ -118,8 +118,14 @@ let editTask = (trId) => {
             status: "doing"
         }
         closeEditTaskDiv();
-        showTask(task);
-        tasks[trId - 1] = task;
+        document.getElementById(`titleInput${trId - 1}`).innerHTML = title;
+        document.getElementById(`descriptionInput${trId - 1}`).innerHTML = description;
+        document.getElementById(`categoryInput${trId - 1}`).innerHTML = category;
+        document.getElementById(`labelInput${trId - 1}`).innerHTML = labels[label];
+        document.getElementById(`finishDateInput${trId - 1}`).innerHTML = finishDate;
+        console.log(trId)
+        tasks[trId - 2] = task;
+        console.log(tasks)
     } else {
         alert("Please enter the important value")
     }
