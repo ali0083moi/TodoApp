@@ -26,15 +26,18 @@ let tasks = [{
     status: "doing"
 },
 {
-    title: "کد todo app رو باید بزنم",
-    description: "زدن کد های جاوااسکریپت و html و css",
-    category: "کار",
+    title: "حل تست های ریاضی",
+    description: "تست های کتاب از 110 تا 150 حل شوند",
+    category: "مدرسه",
     label: "important",
-    createdDate: "1399/12/25",
-    finishDate: "1399/12/27",
-    status: "done"
-},
+    createdDate: "1399/11/13",
+    finishDate: "1399/11/17",
+    status: "doing"
+}
 ];
+let doneTasks = {
+
+}
 const labels = {
     important: "مهم",
     normal: "معمولی",
@@ -43,9 +46,8 @@ const labels = {
 
 let trId = 0;
 let showTask = (task) => {
-    if (task.status == "doing") {
-        trId++;
-        document.getElementById("taskContent").innerHTML += `
+    trId++;
+    document.getElementById("taskContent").innerHTML += `
         <tr id ="tsakTr${trId}">
         <td id="titleInput${trId}" class="col-md-2">${task.title}</td>
         <td id="descriptionInput${trId}" class="col-md-3">${task.description}</td>
@@ -60,9 +62,16 @@ let showTask = (task) => {
         <td class="col-md-2 task_action">
             <button onclick="doneTask(${trId})" style="color: #58BB57;"><i class="fas fa-check"></i></button>
             <button onclick="showEditTaskDiv(${trId})" style="color: #ffffff;"><i class="fas fa-edit"></i></button>
-            <button onclick="deleteTask(${trId})" style="color: #B83731;"><i class="fas fa-trash-alt"></i></button>
+            <button onclick="showdeleteBox(${trId})" style="color: #B83731;"><i class="fas fa-trash-alt"></i></button>
+            <!--<button style="color: #B83731;">${trId}</button>-->
         </td>
     </tr>`
+}
+let start = () => {
+    trId = 0;
+    document.getElementById("taskContent").innerHTML = "";
+    for (let task of tasks) {
+        showTask(task)
     }
 }
 for (let task of tasks) {
@@ -118,13 +127,13 @@ let editTask = (trId) => {
             status: "doing"
         }
         closeEditTaskDiv();
-        document.getElementById(`titleInput${trId - 1}`).innerHTML = title;
-        document.getElementById(`descriptionInput${trId - 1}`).innerHTML = description;
-        document.getElementById(`categoryInput${trId - 1}`).innerHTML = category;
-        document.getElementById(`labelInput${trId - 1}`).innerHTML = labels[label];
-        document.getElementById(`finishDateInput${trId - 1}`).innerHTML = finishDate;
+        document.getElementById(`titleInput${trId}`).innerHTML = title;
+        document.getElementById(`descriptionInput${trId}`).innerHTML = description;
+        document.getElementById(`categoryInput${trId}`).innerHTML = category;
+        document.getElementById(`labelInput${trId}`).innerHTML = labels[label];
+        document.getElementById(`finishDateInput${trId}`).innerHTML = finishDate;
         console.log(trId)
-        tasks[trId - 2] = task;
+        tasks[trId - 1] = task;
         console.log(tasks)
     } else {
         alert("Please enter the important value")
@@ -136,9 +145,19 @@ let doneTask = (trId) => {
     tasks[trId - 1].status = "done";
     console.log(tasks[trId - 1])
 }
+let showdeleteBox = (trId) => {
+    document.getElementById("questText").innerHTML = "آیا از پاک کردن این کار مطمئنید ؟";
+    document.getElementById("questDiv").style.display = "flex";
+    document.getElementById("yesBtn").setAttribute("onClick", `deleteTask(${trId});`);
+}
+let hideQuestBox = () => {
+    document.getElementById("questDiv").style.display = "none";
+}
 let deleteTask = (trId) => {
-    tasks.splice(tasks[trId - 1], 1);
+    tasks.splice(trId - 1, 1);
     document.getElementById(`tsakTr${trId}`).style.display = "none";
+    document.getElementById("questDiv").style.display = "none";
+    start();
 }
 let closeAddTaskDiv = () => {
     document.getElementById("addTaskDiv").style.display = "none"
@@ -147,7 +166,7 @@ let closeEditTaskDiv = () => {
     document.getElementById("editTaskDiv").style.display = "none"
 }
 let showAddTaskDiv = () => {
-    document.getElementById("addTaskDiv").style.display = "flex"
+    document.getElementById("addTaskDiv").style.display = "flex";
 }
 let showEditTaskDiv = (trId) => {
     document.getElementById("editTaskDiv").style.display = "flex"
@@ -156,4 +175,21 @@ let showEditTaskDiv = (trId) => {
     document.getElementById("taskCategoryE").value = tasks[trId - 1].category;
     document.getElementById("taskFinishDateE").value = tasks[trId - 1].finishDate;
     document.getElementById("taskLabelE").value = tasks[trId - 1].label;
+    document.getElementById("addTaskBtn").setAttribute("onClick", `editTask(${trId});`);
 }
+// let sortByCreatedDate = () => {
+//     document.getElementById("taskContent").innerHTML =
+//         `<tbody>
+//             <tr>
+//                 <th class="col-md-2">عنوان</th>
+//                 <th class="col-md-3">توضیحات</th>
+//                 <th class="col-md-2">موضوع</th>
+//                 <th onclick = "sortByCreatedDate()" class="col-md-1">تاریخ ایجاد</th>
+//                 <th class="col-md-1">تاریخ پایان</th>
+//                 <th class="col-md-1">برچسب</th>
+//                 <th class="col-md-2">فعالیت ها</th>
+//             </tr>
+//         </tbody>
+//     `
+//     tasks.sort((a , b) => a.createdDate - b.createdDate);
+// }

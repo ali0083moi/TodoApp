@@ -49,7 +49,7 @@
                 <li class="col-md-2">فعالیت ها</li>
             </ul>
             <hr> -->
-            <table class="task_content" style="width: 100%;">
+            <table id="taskContent" class="task_content" style="width: 100%;">
                 <tbody>
                     <tr>
                         <th class="col-md-2">عنوان</th>
@@ -61,7 +61,6 @@
                         <th class="col-md-2">فعالیت ها</th>
                     </tr>
                 </tbody>
-                <tbody id="taskContent"></tbody>
             </table>
         </div>
         <!-- add Task -->
@@ -77,15 +76,15 @@
                             title="لطفاً عنوان را وارد کنید" placeholder="عنوان">
                         <label class="add_task_label" for="">توضیحات</label>
                         <textarea type="text" name="taskDescription" class="add_task_input" id="taskDescription"
-                            title="لطفاً توضیحات کار را وارد کنید" placeholder="توضیحات" maxlength="100"> </textarea>
+                            title="لطفاً توضیحات کار را وارد کنید" placeholder= "توضیحات" maxlength="100"> </textarea>
                     </div>
                     <div class="col-md-6">
                         <label class="add_task_label" for="">موضوع</label>
                         <input type="text" name="taskCategory" class="add_task_input" id="taskCategory"
                             title="لطفاً موضوع را وارد کنید" placeholder="موضوع">
                         <label class="add_task_label" for="">تاریخ پایان</label>
-                        <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
-                            name="taskFinishDate" class="add_task_input" id="taskFinishDate"
+                        <input type="text" onfocus="(this.type='date')"
+                        onblur="(this.type='text')" name="taskFinishDate" class="add_task_input" id="taskFinishDate"
                             title="لطفاً تاریخ پایان را وارد کنید" placeholder="تاریخ پایان">
                         <label class="add_task_label" for="">برچسب</label>
                         <select class="add_task_input" name="taskLabel" id="taskLabel"
@@ -116,15 +115,15 @@
                             title="لطفاً عنوان را وارد کنید" placeholder="عنوان">
                         <label class="add_task_label" for="">توضیحات</label>
                         <textarea type="text" name="taskDescription" class="add_task_input" id="taskDescriptionE"
-                            title="لطفاً توضیحات کار را وارد کنید" placeholder="توضیحات" maxlength="100"> </textarea>
+                            title="لطفاً توضیحات کار را وارد کنید" placeholder= "توضیحات" maxlength="100"> </textarea>
                     </div>
                     <div class="col-md-6">
                         <label class="add_task_label" for="">موضوع</label>
                         <input type="text" name="taskCategory" class="add_task_input" id="taskCategoryE"
                             title="لطفاً موضوع را وارد کنید" placeholder="موضوع">
                         <label class="add_task_label" for="">تاریخ پایان</label>
-                        <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
-                            name="taskFinishDate" class="add_task_input" id="taskFinishDateE"
+                        <input type="text" onfocus="(this.type='date')"
+                        onblur="(this.type='text')" name="taskFinishDate" class="add_task_input" id="taskFinishDateE"
                             title="لطفاً تاریخ پایان را وارد کنید" placeholder="تاریخ پایان">
                         <label class="add_task_label" for="">برچسب</label>
                         <select class="add_task_input" name="taskLabel" id="taskLabelE"
@@ -142,15 +141,6 @@
             </div>
         </div>
         <!-- edit task end -->
-        <div class="quest_div" id="questDiv">
-            <div>
-                <p id="questText"></p>
-                <div style="display: flex;justify-content: flex-end;width: 100%;">
-                    <button onclick="deleteTask(trId)" id="yesBtn" class="accept_btn">بله</button>
-                    <button onclick="hideQuestBox()" id="noBtn" class="decline_btn">خیر</button>
-                </div>
-            </div>
-        </div>
     </div>
     <script src="assets/script.js"></script>
 </body>
