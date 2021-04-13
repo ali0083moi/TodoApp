@@ -35,9 +35,7 @@ let tasks = [{
     status: "doing"
 }
 ];
-let doneTasks = {
-
-}
+let doneTasks = []
 const labels = {
     important: "مهم",
     normal: "معمولی",
@@ -143,7 +141,9 @@ let doneTask = (trId) => {
     alert(`آفرین شما کار " ${tasks[trId - 1].title} " رو انجام دادید`)
     document.getElementById(`tsakTr${trId}`).style.display = "none";
     tasks[trId - 1].status = "done";
-    console.log(tasks[trId - 1])
+    console.log(tasks[trId - 1]);
+    doneTasks.push(tasks[trId - 1]);
+    deleteTask(trId)
 }
 let showdeleteBox = (trId) => {
     document.getElementById("questText").innerHTML = "آیا از پاک کردن این کار مطمئنید ؟";
