@@ -35,7 +35,17 @@ let tasks = [{
     status: "doing"
 }
 ];
-let doneTasks = []
+let doneTasks = [
+    {
+        title: "حل تست های ریاضی",
+        description: "تست های کتاب از 110 تا 150 حل شوند",
+        category: "مدرسه",
+        label: "important",
+        createdDate: "1399/11/13",
+        finishDate: "1399/11/17",
+        status: "done"
+    }
+]
 const labels = {
     important: "مهم",
     normal: "معمولی",
@@ -176,6 +186,13 @@ let showEditTaskDiv = (trId) => {
     document.getElementById("taskFinishDateE").value = tasks[trId - 1].finishDate;
     document.getElementById("taskLabelE").value = tasks[trId - 1].label;
     document.getElementById("addTaskBtn").setAttribute("onClick", `editTask(${trId});`);
+}
+let showArchivedTasks = (doneTasks) => {
+    document.getElementById("taskContent").innerHTML = "";
+    trId = 0;
+    for (let donetask of doneTasks) {
+        showTask(donetask)
+    }
 }
 // let sortByCreatedDate = () => {
 //     document.getElementById("taskContent").innerHTML =
