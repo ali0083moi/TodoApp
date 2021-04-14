@@ -137,7 +137,8 @@ hr {
   box-shadow: 0 0 25px #9b64e344;
   justify-content: center;
 }
-#taskDescription , #taskDescriptionE{
+#taskDescription,
+#taskDescriptionE {
   height: 145px;
   resize: none;
 }
@@ -146,12 +147,14 @@ hr {
   width: 100%;
   justify-content: center;
 }
-.add_task_inputs_div div{
+.add_task_inputs_div div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.add_task_input , .add_task_btn , .cancel_btn{
+.add_task_input,
+.add_task_btn,
+.cancel_btn {
   border: none;
   outline: none;
   border-radius: 5px;
@@ -159,7 +162,7 @@ hr {
   padding: 10px;
   width: 300px;
 }
-.add_task_input{
+.add_task_input {
   margin-bottom: 20px;
   padding: 10px;
   background-color: #181c44;
@@ -168,24 +171,24 @@ hr {
   border: none;
   width: 300px;
 }
-.add_task_label{
+.add_task_label {
   margin: 0px;
   width: 300px;
 }
-.add_task_btn{
-  background-color: #58BB57;
+.add_task_btn {
+  background-color: #58bb57;
   color: #ffffff;
   width: 135px !important;
 }
-.cancel_btn{
-  background-color: #B83731;
+.cancel_btn {
+  background-color: #b83731;
   color: #ffffff;
   width: 135px !important;
 }
-#taskContent tbody tr th{
+#taskContent tbody tr th {
   cursor: pointer;
 }
-.quest_div{
+.quest_div {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -198,7 +201,7 @@ hr {
   backdrop-filter: blur(10px);
   display: none;
 }
-.quest_div div:first-child{
+.quest_div div:first-child {
   width: 300px;
   height: 120px;
   z-index: 9999;
@@ -210,18 +213,18 @@ hr {
   justify-content: space-around;
   flex-direction: column;
 }
-.accept_btn{
+.accept_btn {
   color: #ffffff;
-  background-color: #58BB57;
+  background-color: #58bb57;
   border: none;
   border-radius: 5px;
   width: 50px;
   height: 30px;
   margin-left: 10px;
 }
-.decline_btn{
+.decline_btn {
   color: #ffffff;
-  background-color: #B83731;
+  background-color: #b83731;
   border: none;
   border-radius: 5px;
   width: 50px;

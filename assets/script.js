@@ -55,6 +55,7 @@ const labels = {
 let trId = 0;
 let showTask = (task) => {
     trId++;
+    if (task.status == "done") {
     document.getElementById("taskContent").innerHTML += `
         <tr id ="tsakTr${trId}">
         <td id="titleInput${trId}" class="col-md-2">${task.title}</td>
@@ -68,12 +69,34 @@ let showTask = (task) => {
             </p>
         </td>
         <td class="col-md-2 task_action">
-            <button onclick="doneTask(${trId})" style="color: #58BB57;"><i class="fas fa-check"></i></button>
-            <button onclick="showEditTaskDiv(${trId})" style="color: #ffffff;"><i class="fas fa-edit"></i></button>
-            <button onclick="showdeleteBox(${trId})" style="color: #B83731;"><i class="fas fa-trash-alt"></i></button>
-            <!--<button style="color: #B83731;">${trId}</button>-->
+        <button onclick="undoArchivedTask(${trId})" style="color: #bec917;"><i class="fas fa-undo"></i></button>
+        <button onclick="showEditTaskDiv(${trId})" style="color: #ffffff;"><i class="fas fa-edit"></i></button>
+        <button onclick="showdeleteBox(${trId})" style="color: #B83731;"><i class="fas fa-trash-alt"></i></button>
+        <!--<button style="color: #B83731;">${trId}</button>-->
         </td>
-    </tr>`
+        </tr>`
+    }
+    else {
+        document.getElementById("taskContent").innerHTML += `
+        <tr id ="tsakTr${trId}">
+        <td id="titleInput${trId}" class="col-md-2">${task.title}</td>
+        <td id="descriptionInput${trId}" class="col-md-3">${task.description}</td>
+        <td id="categoryInput${trId}" class="col-md-2">${task.category}</td>
+        <td id="createdDateInput${trId}" class="col-md-1">${task.createdDate}</td>
+        <td id="finishDateInput${trId}" class="col-md-1">${task.finishDate}</td>
+        <td class="col-md-1">
+            <p id="labelInput${trId}" class="label_${task.label}">
+            ${labels[task.label]}
+            </p>
+        </td>
+        <td class="col-md-2 task_action">
+        <button onclick="doneTask(${trId})" style="color: #58BB57;"><i class="fas fa-check"></i></button>
+        <button onclick="showEditTaskDiv(${trId})" style="color: #ffffff;"><i class="fas fa-edit"></i></button>
+        <button onclick="showdeleteBox(${trId})" style="color: #B83731;"><i class="fas fa-trash-alt"></i></button>
+        <!--<button style="color: #B83731;">${trId}</button>-->
+        </td>
+        </tr>`
+    }
 }
 let start = () => {
     trId = 0;
@@ -193,6 +216,13 @@ let showArchivedTasks = (doneTasks) => {
     for (let donetask of doneTasks) {
         showTask(donetask)
     }
+}
+let undoArchivedTask = (trId) => {
+    document.getElementById(`tsakTr${trId}`).style.display = "none";
+    doneTasks[trId - 1].status = "doing";
+    tasks.push(doneTasks[trId - 1]);
+    doneTasks.splice(trId - 1, 1);
+    start();
 }
 // let sortByCreatedDate = () => {
 //     document.getElementById("taskContent").innerHTML =
