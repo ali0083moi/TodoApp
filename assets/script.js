@@ -1,10 +1,19 @@
 //There are in a task => 1.Title 2.Description 3.Category 4.Created Date 5.Label
+function parseArabic(str) {
+    return String( str.replace(/[٠١٢٣٤٥٦٧٨٩]/g, function(d) {
+        return d.charCodeAt(0) - 1632; // Convert Arabic numbers
+    }).replace(/[۰۱۲۳۴۵۶۷۸۹]/g, function(d) {
+        return d.charCodeAt(0) - 1776; // Convert Persian numbers
+    }) );
+}
 let getingDate = () => {
-    let getDate = new Date();
-    let month = getDate.getMonth();
-    let day = getDate.getDate();
-    let year = getDate.getFullYear();
-    let date = `${year}/${month}/${day}`;
+    let date = new Date().toLocaleDateString('fa-IR');
+    if (date.substring(6, 7) == "/") {
+        date = date.substring(0, 5) + "0" + date.substring(5, date.length);
+    }
+    if (date.length < 10) {
+        date = date.substring(0, 8) + "0" + date.substring(8, date.length);
+    }   
     return date;
 }
 let tasks = [{
@@ -12,7 +21,7 @@ let tasks = [{
     description: "ثبت ساعت مطالعه باید انجام شود",
     category: "مدرسه",
     label: "minor",
-    createdDate: "1399/11/19",
+    createdDate: "1399/11/16",
     finishDate: "1399/11/22",
     status: "doing"
 },
@@ -21,7 +30,7 @@ let tasks = [{
     description: "تست های کتاب از 100 تا 120 حل شوند",
     category: "مدرسه",
     label: "normal",
-    createdDate: "1399/11/13",
+    createdDate: "1400/05/03",
     finishDate: "1399/11/17",
     status: "doing"
 },
@@ -41,7 +50,7 @@ let doneTasks = [
         description: "تست های کتاب از 110 تا 150 حل شوند",
         category: "مدرسه",
         label: "important",
-        createdDate: "1399/11/13",
+        createdDate: "1400/05/03",
         finishDate: "1399/11/17",
         status: "done"
     }
@@ -56,7 +65,7 @@ let trId = 0;
 let showTask = (task) => {
     trId++;
     if (task.status == "done") {
-    document.getElementById("taskContent").innerHTML += `
+        document.getElementById("taskContent").innerHTML += `
         <tr id ="tsakTr${trId}">
         <td id="titleInput${trId}" class="col-md-2">${task.title}</td>
         <td id="descriptionInput${trId}" class="col-md-3">${task.description}</td>
@@ -224,19 +233,28 @@ let undoArchivedTask = (trId) => {
     doneTasks.splice(trId - 1, 1);
     start();
 }
-// let sortByCreatedDate = () => {
-//     document.getElementById("taskContent").innerHTML =
-//         `<tbody>
-//             <tr>
-//                 <th class="col-md-2">عنوان</th>
-//                 <th class="col-md-3">توضیحات</th>
-//                 <th class="col-md-2">موضوع</th>
-//                 <th onclick = "sortByCreatedDate()" class="col-md-1">تاریخ ایجاد</th>
-//                 <th class="col-md-1">تاریخ پایان</th>
-//                 <th class="col-md-1">برچسب</th>
-//                 <th class="col-md-2">فعالیت ها</th>
-//             </tr>
-//         </tbody>
-//     `
-//     tasks.sort((a , b) => a.createdDate - b.createdDate);
-// }
+let sortByCreatedDate = () => {
+    for (let a = 0; a < tasks.length; a++) {
+        tasks[a].createdDate = tasks[a].createdDate.replaceAll("/", "");
+        tasks[a].createdDate = parseArabic(tasks[a].createdDate);
+        tasks[a].createdDate = tasks[a].createdDate.toString()
+    }
+    tasks.sort(function (a, b) { return a.createdDate - b.createdDate });
+    for (let a = 0; a < tasks.length; a++) {
+        tasks[a].createdDate = tasks[a].createdDate.substring(0, 4) + "/" + tasks[a].createdDate.substring(4, 6) + "/" + tasks[a].createdDate.substring(6, 8)
+    }
+    start(tasks);
+    document.getElementById("createdDateSortBtn").setAttribute("onClick", `reSortByCreatedDate(tasks)`);
+}
+let reSortByCreatedDate = () => {
+    for (let a = 0; a < tasks.length; a++) {
+        tasks[a].createdDate = tasks[a].createdDate.replaceAll("/", "");
+        tasks[a].createdDate = parseArabic(tasks[a].createdDate);
+    }
+    tasks.sort(function (a, b) { return b.createdDate - a.createdDate });
+    for (let a = 0; a < tasks.length; a++) {
+        tasks[a].createdDate = tasks[a].createdDate.substring(0, 4) + "/" + tasks[a].createdDate.substring(4, 6) + "/" + tasks[a].createdDate.substring(6, 8)
+    }
+    start(tasks);
+    document.getElementById("createdDateSortBtn").setAttribute("onClick", `sortByCreatedDate(tasks)`);
+}
