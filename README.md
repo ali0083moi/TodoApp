@@ -1,5 +1,5 @@
 # TodoApp
-It's a Todo App:)
+It's a Todo App
 
 This website can organize your works
 
